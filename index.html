@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoPrime — Loja de Carros</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">Auto<span>Prime</span></div>
+  <nav>
+    <a class="active" onclick="filterStatus('')">Todos</a>
+    <a onclick="filterStatus('novo')">Novos</a>
+    <a onclick="filterStatus('usado')">Usados</a>
+    <a onclick="filterStatus('destaque')">Destaques</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">Concessionária do Ano 2026</div>
+  <h1>SEU PRÓXIMO<br><span>CARRO IDEAL</span><br>ESTÁ AQUI</h1>
+  <p>Mais de 80 veículos selecionados, com garantia e financiamento facilitado. Qualidade e transparência em cada negócio.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num" id="totalCount">0<span>+</span></div>
+      <div class="stat-label">Veículos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">98<span>%</span></div>
+      <div class="stat-label">Satisfação</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15<span>x</span></div>
+      <div class="stat-label">Sem juros</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24h</div>
+      <div class="stat-label">Atendimento</div>
+    </div>
+  </div>
+</section>
+
+<div class="search-bar">
+  <div class="search-row">
+    <input class="search-input" type="text" id="searchInput" placeholder="🔍  Buscar por marca, modelo..." oninput="renderCars()">
+    <select class="filter-select" id="marcaFilter" onchange="renderCars()">
+      <option value="">Marcas</option>
+    </select>
+    <select class="filter-select" id="precoFilter" onchange="renderCars()">
+      <option value="">Qualquer preço</option>
+      <option value="0-80000">Até R$ 80mil</option>
+      <option value="80000-150000">R$ 80k – 150k</option>
+      <option value="150000-300000">R$ 150k – 300k</option>
+      <option value="300000-999999">Acima de R$ 300k</option>
+    </select>
+    <select class="filter-select" id="anoFilter" onchange="renderCars()">
+      <option value="">Qualquer ano</option>
+      <option value="2024">2024</option>
+      <option value="2023">2023</option>
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+      <option value="2020">2020</option>
+    </select>
+    <button class="btn-primary" onclick="clearFilters()">Limpar</button>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">ESTOQUE DISPONÍVEL</div>
+    <div class="section-count" id="resultCount"></div>
+  </div>
+  <div class="cars-grid" id="carsGrid"></div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-brand" id="mBrand"></div>
+        <div class="modal-name" id="mName"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-thumb" id="mThumb"></div>
+    <div class="modal-body">
+      <div class="modal-price-row">
+        <div class="modal-price" id="mPrice"></div>
+        <div class="modal-price-label">ou em até 60x no financiamento</div>
+      </div>
+      <div class="modal-specs-grid" id="mSpecs"></div>
+      <div class="modal-desc" id="mDesc"></div>
+      <div class="modal-actions">
+        <button class="btn-modal-primary" id="mWhatsBtn">💬 Falar no WhatsApp</button>
+        <button class="btn-modal-outline" onclick="closeModalDirect()">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<footer>
+  <strong>AutoPrime</strong> · Londrina, PR · Av., 1500 · (43) 1088-0101<br>
+  <span style="margin-top:6px;display:block">CNPJ 00.000.000/0001-00 · Todos os direitos reservados</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
