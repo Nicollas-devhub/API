@@ -1,4 +1,4 @@
-// ── DADOS DOS VEÍCULOS ──────────────────────────────────────────────────────
+
 const carros = [
   {
     id: 1, marca: "Toyota", modelo: "Corolla XEI",
@@ -69,7 +69,7 @@ const carros = [
   {
     id: 12, marca: "Renault", modelo: "Kardian E-Tech",
     ano: 2024, km: 1200, preco: 152000, status: "novo",
-    combustivel: "Híbrido", cambio: "Automático", cor: "Cinza Highland", cv: "143cv", imagem: "Renault.jpeg",
+    combustivel: "Híbrido", cambio: "Automático", cor: "Cinza Highland", cv: "143cv", imagem: "",
     desc: "Primeiro SUV híbrido da Renault no Brasil. Motor E-Tech full hybrid, economia de até 40% no consumo urbano e design europeu premium."
   },
 ];
@@ -133,7 +133,7 @@ function renderCars() {
   if (!list.length) {
     grid.innerHTML = `
       <div class="empty" style="grid-column:1/-1">
-        <div class="empty-icon">🔍</div>
+        <div class="empty-icon"></div>
         <h3>Nenhum veículo encontrado</h3>
         <p>Tente ajustar os filtros de busca</p>
       </div>`;
